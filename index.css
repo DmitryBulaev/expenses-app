@@ -20,6 +20,7 @@ h1 {
   height: 58px;
   display: block;
   box-sizing: border-box;
+  font-size: 32px;
 }
 
 .add-button {
@@ -36,4 +37,12 @@ h1 {
 
 .add-button:hover {
   opacity: 0.6;
+}
+
+h2 {
+  margin-left: 100px;
+}
+
+.expenses-history {
+  margin-left: 100px;
 }
