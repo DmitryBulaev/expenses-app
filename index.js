@@ -9,11 +9,13 @@ const expensesHistoryNode = document.querySelector(
 );
 const sumNode = document.querySelector('[data-find="total"]');
 const limitNode = document.querySelector('[data-find="limit"]');
+const statusNode = document.querySelector('[data-find="status"]');
 
-limitNode.innerText = LIMIT;
+limitNode.innerText = `${LIMIT} руб.`;
 
 buttonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
+    S;
     return;
   }
   const expense = parseInt(expensesInputNode.value);
@@ -32,5 +34,11 @@ buttonNode.addEventListener("click", function () {
     sum += element;
   });
 
-  sumNode.innerText = sum;
+  sumNode.innerText = `${sum} руб.`;
+
+  if (sum <= LIMIT) {
+    statusNode.innerText = "Всё хорошо";
+  } else {
+    statusNode.innerText = "Всё плохо";
+  }
 });
