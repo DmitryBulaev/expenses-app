@@ -5,6 +5,7 @@ const buttonNode = document.getElementById("addedButton");
 const expensesHistoryNode = document.querySelector(
   '[data-find="expensesHistory"]'
 );
+const sumNode = document.querySelector('[data-find="total"]');
 
 buttonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
@@ -16,8 +17,15 @@ buttonNode.addEventListener("click", function () {
 
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}</li>`;
+    expensesListHTML += `<li>${element} руб.</li>`;
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+
+  let sum = 0;
+  expenses.forEach((element) => {
+    sum += element;
+  });
+
+  sumNode.innerText = sum;
 });
