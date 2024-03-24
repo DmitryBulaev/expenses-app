@@ -15,10 +15,21 @@ const statusNode = document.querySelector('[data-find="status"]');
 
 const expenses = [];
 
-function init() {
+init(expenses);
+
+function init(expenses) {
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
-  sumNode.innerText = `${sum} ${CURRENCY}`;
+  sumNode.innerText = calculateExpanses(expenses);
+}
+
+function calculateExpanses(expenses) {
+  let sum = 0;
+  expenses.forEach((element) => {
+    sum += element;
+
+    return sum;
+  });
 }
 
 buttonNode.addEventListener("click", function () {
@@ -36,12 +47,7 @@ buttonNode.addEventListener("click", function () {
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 
-  let sum = 0;
-  expenses.forEach((element) => {
-    sum += element;
-  });
-
-  sumNode.innerText = `${sum} ${CURRENCY}`;
+  sumNode.innerText = `${calculateExpanses(expenses)} ${CURRENCY}`;
 
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
