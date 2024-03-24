@@ -1,6 +1,8 @@
-const expenses = [];
-
 const LIMIT = 10000;
+const CURRENCY = "руб.";
+const STATUS_IN_LIMIT = "Всё хорошо";
+const STATUS_OUT_OF_LIMIT = "Всё плохо";
+const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.querySelector('[data-find="expensesInput"]');
 const buttonNode = document.getElementById("addedButton");
@@ -11,11 +13,16 @@ const sumNode = document.querySelector('[data-find="total"]');
 const limitNode = document.querySelector('[data-find="limit"]');
 const statusNode = document.querySelector('[data-find="status"]');
 
-limitNode.innerText = `${LIMIT} руб.`;
+const expenses = [];
+
+function init() {
+  limitNode.innerText = `${LIMIT} ${CURRENCY}`;
+  statusNode.innerText = STATUS_IN_LIMIT;
+  sumNode.innerText = `${sum} ${CURRENCY}`;
+}
 
 buttonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
-    S;
     return;
   }
   const expense = parseInt(expensesInputNode.value);
@@ -24,7 +31,7 @@ buttonNode.addEventListener("click", function () {
 
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element} руб.</li>`;
+    expensesListHTML += `<li>${element} ${CURRENCY}</li>`;
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
@@ -34,12 +41,12 @@ buttonNode.addEventListener("click", function () {
     sum += element;
   });
 
-  sumNode.innerText = `${sum} руб.`;
+  sumNode.innerText = `${sum} ${CURRENCY}`;
 
   if (sum <= LIMIT) {
-    statusNode.innerText = "Всё хорошо";
+    statusNode.innerText = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerText = "Всё плохо";
-    statusNode.classList.add("status_red");
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 });
