@@ -58,3 +58,11 @@ h2 {
 .expenses-status {
   margin-left: 100px;
 }
+
+.status {
+  color: #32cd32;
+}
+
+.status_red {
+  color: red;
+}
