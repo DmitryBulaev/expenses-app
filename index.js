@@ -26,13 +26,7 @@ buttonNode.addEventListener("click", function () {
 
   trackExpanse(expense);
 
-  expenses.push(expense);
-
-  renderHistiry(expenses);
-
-  renderSum(expenses);
-
-  renderStatus(expenses);
+  render(expenses);
 });
 
 function init(expenses) {
@@ -66,6 +60,14 @@ function clearInput() {
   expensesInputNode.value = "";
 }
 
+function render(expenses) {
+  const sum = calculateExpenses(expenses);
+
+  renderHistiry(expenses);
+  renderSum(sum);
+  renderStatus(sum);
+}
+
 function renderHistiry(expenses) {
   let expensesListHTML = "";
   expenses.forEach((element) => {
@@ -75,13 +77,11 @@ function renderHistiry(expenses) {
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
 
-function renderSum(expenses) {
-  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
+function renderSum(sum) {
+  sumNode.innerText = `${sum} ${CURRENCY}`;
 }
 
-function renderStatus(expenses) {
-  const sum = calculateExpenses(expenses);
-
+function renderStatus(sum) {
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
