@@ -18,29 +18,27 @@ const expenses = [];
 init(expenses);
 
 buttonNode.addEventListener("click", function () {
-  if (!expensesInputNode.value) {
+  const expense = getExpenseFromUser();
+
+  if (!expense) {
     return;
   }
-  const expense = parseInt(expensesInputNode.value);
-  expensesInputNode.value = "";
+
+  trackExpanse(expense);
+
   expenses.push(expense);
 
   renderHistiry(expenses);
 
-  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
+  renderSum(expenses);
 
-  if (sum <= LIMIT) {
-    statusNode.innerText = STATUS_IN_LIMIT;
-  } else {
-    statusNode.innerText = STATUS_OUT_OF_LIMIT;
-    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
-  }
+  renderStatus(expenses);
 });
 
 function init(expenses) {
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
-  sumNode.innerText = calculateExpenses(expenses);
+  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
 }
 
 function calculateExpenses(expenses) {
@@ -51,6 +49,23 @@ function calculateExpenses(expenses) {
   return sum;
 }
 
+function trackExpanse(expense) {
+  expenses.push(expense);
+}
+
+function getExpenseFromUser() {
+  if (!expensesInputNode.value) {
+    return null;
+  }
+  const expense = parseInt(expensesInputNode.value);
+  clearInput();
+  return expense;
+}
+
+function clearInput() {
+  expensesInputNode.value = "";
+}
+
 function renderHistiry(expenses) {
   let expensesListHTML = "";
   expenses.forEach((element) => {
@@ -58,4 +73,19 @@ function renderHistiry(expenses) {
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+}
+
+function renderSum(expenses) {
+  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
+}
+
+function renderStatus(expenses) {
+  const sum = calculateExpenses(expenses);
+
+  if (sum <= LIMIT) {
+    statusNode.innerText = STATUS_IN_LIMIT;
+  } else {
+    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+  }
 }
