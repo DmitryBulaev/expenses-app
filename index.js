@@ -17,21 +17,6 @@ const expenses = [];
 
 init(expenses);
 
-function init(expenses) {
-  limitNode.innerText = `${LIMIT} ${CURRENCY}`;
-  statusNode.innerText = STATUS_IN_LIMIT;
-  sumNode.innerText = calculateExpenses(expenses);
-}
-
-function calculateExpenses(expenses) {
-  let sum = 0;
-  expenses.forEach((element) => {
-    sum += element;
-
-    return sum;
-  });
-}
-
 buttonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
     return;
@@ -40,12 +25,7 @@ buttonNode.addEventListener("click", function () {
   expensesInputNode.value = "";
   expenses.push(expense);
 
-  let expensesListHTML = "";
-  expenses.forEach((element) => {
-    expensesListHTML += `<li>${element} ${CURRENCY}</li>`;
-  });
-
-  expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+  renderHistiry(expenses);
 
   sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
 
@@ -56,3 +36,26 @@ buttonNode.addEventListener("click", function () {
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 });
+
+function init(expenses) {
+  limitNode.innerText = `${LIMIT} ${CURRENCY}`;
+  statusNode.innerText = STATUS_IN_LIMIT;
+  sumNode.innerText = calculateExpenses(expenses);
+}
+
+function calculateExpenses(expenses) {
+  let sum = 0;
+  expenses.forEach((element) => {
+    sum += element;
+  });
+  return sum;
+}
+
+function renderHistiry(expenses) {
+  let expensesListHTML = "";
+  expenses.forEach((element) => {
+    expensesListHTML += `<li>${element} ${CURRENCY}</li>`;
+  });
+
+  expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+}
