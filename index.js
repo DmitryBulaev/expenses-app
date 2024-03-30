@@ -20,10 +20,10 @@ init(expenses);
 function init(expenses) {
   limitNode.innerText = `${LIMIT} ${CURRENCY}`;
   statusNode.innerText = STATUS_IN_LIMIT;
-  sumNode.innerText = calculateExpanses(expenses);
+  sumNode.innerText = calculateExpenses(expenses);
 }
 
-function calculateExpanses(expenses) {
+function calculateExpenses(expenses) {
   let sum = 0;
   expenses.forEach((element) => {
     sum += element;
@@ -47,7 +47,7 @@ buttonNode.addEventListener("click", function () {
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 
-  sumNode.innerText = `${calculateExpanses(expenses)} ${CURRENCY}`;
+  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
 
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
