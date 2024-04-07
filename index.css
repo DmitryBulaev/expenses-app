@@ -8,7 +8,7 @@ h1 {
   font-weight: 700;
 }
 
-.input-container {
+.input-section {
   margin-left: 100px;
   display: flex;
   flex-direction: row;
