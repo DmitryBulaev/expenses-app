@@ -39,24 +39,44 @@ h1 {
   opacity: 0.6;
 }
 
-h2 {
-  margin-left: 100px;
+.expenses-output-section {
+  margin: 40px 0 0 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 213px;
 }
 
-.expenses-history {
-  margin-left: 100px;
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.expenses-history,
+.expenses-limit,
+.expenses-sum,
+.expenses-status {
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .expenses-limit {
-  margin-left: 100px;
+  margin-bottom: 20px;
 }
-
 .expenses-sum {
-  margin-left: 100px;
+  margin-bottom: 40px;
 }
 
-.expenses-status {
-  margin-left: 100px;
+.limit,
+.total,
+.status,
+.expenses-history {
+  font-weight: 400;
+}
+
+.limit,
+.total,
+.status {
+  display: inline;
 }
 
 .status {
