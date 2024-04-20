@@ -16,28 +16,27 @@
   </head>
   <body>
     <h1>Учет расходов</h1>
-    <section class="input-section">
+    <div class="expenses">
       <input data-find="expensesInput" class="expenses-input" type="number" />
       <button id="addedButton" class="add-button">Добавить</button>
-    </section>
-    <section class="expenses-output-section">
-      <div class="expenses-container">
-        <p class="expenses-limit">
-          Лимит: <span data-find="limit" class="limit"></span>
-        </p>
-        <p class="expenses-sum">
-          Всего: <span data-find="total" class="total">0 руб.</span>
-        </p>
-        <p class="expenses-status">
-          Статус: <span data-find="status" class="status">всё хорошо</span>
-        </p>
-      </div>
-      <div class="history-container">
-        <h2>История:</h2>
-        <div data-find="expensesHistory" class="expenses-history"></div>
-      </div>
-    </section>
-
-    <script src="index.js"></script>
+      <section class="expenses-output-section">
+        <div class="expenses-container">
+          <p class="expenses-limit">
+            Лимит: <span data-find="limit" class="limit"></span>
+          </p>
+          <p class="expenses-sum">
+            Всего: <span data-find="total" class="total">0 руб.</span>
+          </p>
+          <p class="expenses-status">
+            Статус: <span data-find="status" class="status">всё хорошо</span>
+          </p>
+        </div>
+        <div class="history-container">
+          <h2>История:</h2>
+          <div data-find="expensesHistory" class="expenses-history"></div>
+        </div>
+      </section>
+      <script src="index.js"></script>
+    </div>
   </body>
 </html>
