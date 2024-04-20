@@ -43,12 +43,20 @@ h1 {
   margin: 40px 0 0 100px;
   display: flex;
   flex-direction: row;
-  gap: 213px;
+  gap: 163px;
 }
 
 h2 {
   font-size: 32px;
   font-weight: 700;
+}
+
+.expenses-container {
+  width: 350px;
+}
+
+.history-container {
+  width: 300px;
 }
 
 .expenses-history,
