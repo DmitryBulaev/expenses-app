@@ -4,7 +4,7 @@ const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
-const expensesInputNode = document.querySelector('[data-find="expensesInput"]');
+const expensesInputNode = document.getElementById("expensesInput");
 const buttonNode = document.getElementById("addedButton");
 const expensesHistoryNode = document.querySelector(
   '[data-find="expensesHistory"]'
