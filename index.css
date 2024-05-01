@@ -8,28 +8,55 @@ h1 {
   font-weight: 700;
 }
 
-.input-section {
+.label {
+  font-weight: 700;
+}
+
+.rub::after {
+  content: "руб.";
+}
+
+.expenses {
   margin-left: 100px;
+  width: 1000px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
-.expenses-input {
+.expensesInput {
   width: 484px;
+}
+
+.moneyInput {
   height: 58px;
-  display: block;
-  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  padding: 10px 17px 9px 22px;
   font-size: 32px;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.moneyInput__input {
+  width: 100%;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.moneyInput__input:focus-visible {
+  outline: none;
 }
 
 .add-button {
   width: 370px;
   height: 58px;
   display: block;
-  box-sizing: border-box;
   background-color: #0094ff;
   font-size: 32px;
+  font-family: inherit;
   color: #ffffff;
   cursor: pointer;
   border: none;
@@ -37,60 +64,4 @@ h1 {
 
 .add-button:hover {
   opacity: 0.6;
-}
-
-.expenses-output-section {
-  margin: 40px 0 0 100px;
-  display: flex;
-  flex-direction: row;
-  gap: 163px;
-}
-
-h2 {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.expenses-container {
-  width: 350px;
-}
-
-.history-container {
-  width: 300px;
-}
-
-.expenses-history,
-.expenses-limit,
-.expenses-sum,
-.expenses-status {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.expenses-limit {
-  margin-bottom: 20px;
-}
-.expenses-sum {
-  margin-bottom: 40px;
-}
-
-.limit,
-.total,
-.status,
-.expenses-history {
-  font-weight: 400;
-}
-
-.limit,
-.total,
-.status {
-  display: inline;
-}
-
-.status {
-  color: #32cd32;
-}
-
-.status_red {
-  color: red;
 }
