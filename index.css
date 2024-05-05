@@ -65,3 +65,29 @@ h1 {
 .add-button:hover {
   opacity: 0.6;
 }
+
+.stats {
+  width: 484px;
+}
+
+.stats__limit {
+  font-size: 32px;
+}
+
+.stats__total {
+  margin-top: 13px;
+  font-size: 32px;
+}
+
+.stats__status {
+  margin-top: 35px;
+  font-size: 32px;
+}
+
+.history {
+  width: 370px;
+}
+
+.history__status {
+  font-size: 32px;
+}
