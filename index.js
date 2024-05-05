@@ -1,10 +1,11 @@
 const LIMIT = 10000;
-const STATUS_IN_LIMIT = "Всё хорошо";
-const STATUS_OUT_OF_LIMIT = "Всё плохо";
+const STATUS_IN_LIMIT = "всё хорошо";
+const STATUS_OUT_OF_LIMIT = "всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
 const buttonNode = document.getElementById("addButton");
+const resetButton = document.getElementById("clearButton");
 const expensesHistoryNode = document.getElementById("historyList");
 const sumNode = document.getElementById("totalValue");
 const limitNode = document.getElementById("limitValue");
@@ -24,6 +25,18 @@ buttonNode.addEventListener("click", function () {
   trackExpanse(expense);
 
   render(expenses);
+});
+
+resetButton.addEventListener("click", function () {
+  statusNode.innerText = STATUS_IN_LIMIT;
+
+  expenses.length = 0;
+
+  expensesHistoryNode.innerHTML = "";
+
+  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+
+  sumNode.innerText = 0;
 });
 
 function init(expenses) {

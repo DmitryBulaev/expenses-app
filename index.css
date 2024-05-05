@@ -79,6 +79,14 @@ h1 {
   font-size: 32px;
 }
 
+.status {
+  color: #039000;
+}
+
+.status_red {
+  color: #fc0000;
+}
+
 .stats__status {
   margin-top: 35px;
   font-size: 32px;
