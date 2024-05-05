@@ -13,7 +13,7 @@ h1 {
 }
 
 .rub::after {
-  content: "руб.";
+  content: " руб.";
 }
 
 .expenses {
@@ -50,7 +50,7 @@ h1 {
   outline: none;
 }
 
-.add-button {
+.addButton {
   width: 370px;
   height: 58px;
   display: block;
@@ -62,7 +62,7 @@ h1 {
   border: none;
 }
 
-.add-button:hover {
+.addButton:hover {
   opacity: 0.6;
 }
 
@@ -88,6 +88,32 @@ h1 {
   width: 370px;
 }
 
-.history__status {
+.history__title {
   font-size: 32px;
+}
+
+ol {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.clearButton-wrapper {
+  margin-top: 100px;
+  margin-left: 100px;
+}
+
+.clearButton {
+  width: 484px;
+  height: 58px;
+  display: block;
+  background-color: #ff0000;
+  font-size: 32px;
+  font-family: inherit;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+}
+
+.clearButton:hover {
+  opacity: 0.6;
 }

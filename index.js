@@ -1,17 +1,14 @@
 const LIMIT = 10000;
-const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
-const buttonNode = document.getElementById("addedButton");
-const expensesHistoryNode = document.querySelector(
-  '[data-find="expensesHistory"]'
-);
-const sumNode = document.querySelector('[data-find="total"]');
-const limitNode = document.querySelector('[data-find="limit"]');
-const statusNode = document.querySelector('[data-find="status"]');
+const buttonNode = document.getElementById("addButton");
+const expensesHistoryNode = document.getElementById("historyList");
+const sumNode = document.getElementById("totalValue");
+const limitNode = document.getElementById("limitValue");
+const statusNode = document.getElementById("statusText");
 
 const expenses = [];
 
@@ -30,9 +27,9 @@ buttonNode.addEventListener("click", function () {
 });
 
 function init(expenses) {
-  limitNode.innerText = `${LIMIT} ${CURRENCY}`;
+  limitNode.innerText = LIMIT;
   statusNode.innerText = STATUS_IN_LIMIT;
-  sumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
+  sumNode.innerText = calculateExpenses(expenses);
 }
 
 function calculateExpenses(expenses) {
@@ -71,14 +68,14 @@ function render(expenses) {
 function renderHistiry(expenses) {
   let expensesListHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element} ${CURRENCY}</li>`;
+    expensesListHTML += `<li>${element}</li>`;
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
 
 function renderSum(sum) {
-  sumNode.innerText = `${sum} ${CURRENCY}`;
+  sumNode.innerText = sum;
 }
 
 function renderStatus(sum) {
