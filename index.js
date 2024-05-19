@@ -74,7 +74,6 @@ function render(expenses) {
   const sum = calculateExpenses(expenses);
 
   renderHistiry(expenses);
-  renderSum(sum);
   renderStatus(sum);
 }
 
@@ -87,15 +86,12 @@ function renderHistiry(expenses) {
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 }
 
-function renderSum(sum) {
-  sumNode.innerText = sum;
-}
-
 function renderStatus(sum) {
+  sumNode.innerText = sum;
   if (sum <= LIMIT) {
     statusNode.innerText = STATUS_IN_LIMIT;
   } else {
-    statusNode.innerText = STATUS_OUT_OF_LIMIT;
+    statusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${LIMIT - sum} руб)`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 }
