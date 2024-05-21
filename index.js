@@ -5,13 +5,13 @@ const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
 const buttonNode = document.getElementById("addButton");
-const resetButton = document.getElementById("clearButton");
+const resetButtonNode = document.getElementById("clearButton");
 const expensesHistoryNode = document.getElementById("historyList");
 const sumNode = document.getElementById("totalValue");
 const limitNode = document.getElementById("limitValue");
 const statusNode = document.getElementById("statusText");
 
-const expenses = [];
+let expenses = [];
 
 init(expenses);
 
@@ -25,18 +25,6 @@ buttonNode.addEventListener("click", function () {
   trackExpanse(expense);
 
   render(expenses);
-});
-
-resetButton.addEventListener("click", function () {
-  statusNode.innerText = STATUS_IN_LIMIT;
-
-  expenses.length = 0;
-
-  expensesHistoryNode.innerHTML = "";
-
-  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
-
-  sumNode.innerText = 0;
 });
 
 function init(expenses) {
@@ -78,12 +66,14 @@ function render(expenses) {
 }
 
 function renderHistiry(expenses) {
-  let expensesListHTML = "";
+  expensesHistoryNode.innerHTML = "";
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}</li>`;
-  });
+    const expensesElement = document.createElement("li");
+    expensesElement.className = "rub";
+    expensesElement.innerText = element;
 
-  expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+    expensesHistoryNode.appendChild(expensesElement);
+  });
 }
 
 function renderStatus(sum) {
@@ -95,3 +85,9 @@ function renderStatus(sum) {
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
 }
+
+resetButtonNode.addEventListener("click", function () {
+  expenses = [];
+  render(expenses);
+  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+});
