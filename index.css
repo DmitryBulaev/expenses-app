@@ -50,6 +50,15 @@ h1 {
   outline: none;
 }
 
+.categoreSelect {
+  margin-top: 18px;
+  width: 484px;
+  height: 58px;
+  padding-left: 22px;
+  font-size: 32px;
+  border: 1px solid black;
+}
+
 .addButton {
   width: 370px;
   height: 58px;
