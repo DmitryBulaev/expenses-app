@@ -4,7 +4,7 @@ const STATUS_OUT_OF_LIMIT = "всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
-const buttonNode = document.getElementById("addButton");
+const addedButtonNode = document.getElementById("addButton");
 const resetButtonNode = document.getElementById("clearButton");
 const expensesHistoryNode = document.getElementById("historyList");
 const sumNode = document.getElementById("totalValue");
@@ -15,7 +15,7 @@ let expenses = [];
 
 init(expenses);
 
-buttonNode.addEventListener("click", function () {
+addedButtonNode.addEventListener("click", function () {
   const expense = getExpenseFromUser();
 
   if (!expense) {
