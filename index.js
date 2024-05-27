@@ -6,6 +6,7 @@ const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 const expensesInputNode = document.getElementById("expensesInput");
 const addedButtonNode = document.getElementById("addButton");
 const resetButtonNode = document.getElementById("clearButton");
+const categorySelectNode = document.getElementById("categorySelect");
 const expensesHistoryNode = document.getElementById("historyList");
 const sumNode = document.getElementById("totalValue");
 const limitNode = document.getElementById("limitValue");
@@ -21,6 +22,16 @@ function addButtonHandler() {
   if (!expense) {
     return;
   }
+
+  const currentCategory = getSelectedCategory();
+
+  if (currentCategory === "Категория") {
+    return;
+  }
+
+  const newExpense = { expense: expense, category: currentCategory };
+
+  expenses.push(newExpense);
 
   trackExpanse(expense);
 
@@ -60,8 +71,8 @@ function getExpenseFromUser() {
   return expense;
 }
 
-function clearInput() {
-  expensesInputNode.value = "";
+function getSelectedCategory() {
+  return categorySelectNode.value;
 }
 
 function render(expenses) {
@@ -90,6 +101,10 @@ function renderStatus(sum) {
     statusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${LIMIT - sum} руб)`;
     statusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
+}
+
+function clearInput() {
+  expensesInputNode.value = "";
 }
 
 addedButtonNode.addEventListener("click", addButtonHandler);
