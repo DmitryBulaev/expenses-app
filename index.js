@@ -15,7 +15,7 @@ let expenses = [];
 
 init(expenses);
 
-addedButtonNode.addEventListener("click", function () {
+function addButtonHandler() {
   const expense = getExpenseFromUser();
 
   if (!expense) {
@@ -25,7 +25,13 @@ addedButtonNode.addEventListener("click", function () {
   trackExpanse(expense);
 
   render(expenses);
-});
+}
+
+function resetButtonHandler() {
+  expenses = [];
+  render(expenses);
+  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
+}
 
 function init(expenses) {
   limitNode.innerText = LIMIT;
@@ -86,8 +92,6 @@ function renderStatus(sum) {
   }
 }
 
-resetButtonNode.addEventListener("click", function () {
-  expenses = [];
-  render(expenses);
-  statusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
-});
+addedButtonNode.addEventListener("click", addButtonHandler);
+
+resetButtonNode.addEventListener("click", resetButtonHandler);
