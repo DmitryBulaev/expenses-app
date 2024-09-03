@@ -1,8 +1,12 @@
-let expenses = [];
+const expenses = [2];
 
-expenses.push(100);
-expenses.push(200);
-expenses.push(300);
-expenses.push(400);
+const expensesInputNode = document.getElementById("expensesInput");
+const addExpensesButtonNode = document.getElementById("addExpensesButton");
 
-console.log(expenses);
+addExpensesButtonNode.addEventListener("click", function () {
+  let expense = expensesInputNode.value;
+
+  expenses.push(expense);
+
+  console.log(expenses);
+});
