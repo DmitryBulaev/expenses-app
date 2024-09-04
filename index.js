@@ -18,7 +18,7 @@ addExpensesButtonNode.addEventListener("click", function () {
   let expensesListHTML = "";
 
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}</li>`;
+    expensesListHTML += `<li>${element}  руб.</li>`;
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;

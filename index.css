@@ -12,11 +12,13 @@ h1 {
 .expenses-input {
   width: 300px;
   height: 40px;
-  box-sizing: border-box;
 }
 
 .add-expenses-button {
-  width: 70px;
+  width: 80px;
   height: 40px;
-  box-sizing: border-box;
+}
+
+ol {
+  padding-inline-start: 15px;
 }
