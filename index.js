@@ -2,6 +2,7 @@ const expenses = [];
 
 const expensesInputNode = document.getElementById("expensesInput");
 const addExpensesButtonNode = document.getElementById("addExpensesButton");
+const expensesHistoryNode = document.getElementById("expensesHistory");
 
 addExpensesButtonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
@@ -10,9 +11,15 @@ addExpensesButtonNode.addEventListener("click", function () {
 
   const expense = parseInt(expensesInputNode.value);
 
-  expenses.push(expense);
-
   expensesInputNode.value = "";
 
-  console.log(expenses);
+  expenses.push(expense);
+
+  let expensesListHTML = "";
+
+  expenses.forEach((element) => {
+    expensesListHTML += `<li>${element}</li>`;
+  });
+
+  expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 });
