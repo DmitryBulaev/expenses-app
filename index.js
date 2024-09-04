@@ -3,6 +3,7 @@ const expenses = [];
 const expensesInputNode = document.getElementById("expensesInput");
 const addExpensesButtonNode = document.getElementById("addExpensesButton");
 const expensesHistoryNode = document.getElementById("expensesHistory");
+const expensesSumNode = document.getElementById("expensesSum");
 
 addExpensesButtonNode.addEventListener("click", function () {
   if (!expensesInputNode.value) {
@@ -22,4 +23,12 @@ addExpensesButtonNode.addEventListener("click", function () {
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+
+  let sum = null;
+
+  expenses.forEach((element) => {
+    sum += element;
+  });
+
+  expensesSumNode.innerText = sum;
 });

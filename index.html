@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expenses app</title>
 
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
 
@@ -21,7 +23,9 @@
     <input id="expensesInput" type="number" class="expenses-input" />
     <button id="addExpensesButton" class="add-expenses-button">Добавить</button>
 
-    <h2>История</h2>
+    <h2>Сумма: <span id="expensesSum" class="expenses-sum">0</span></h2>
+
+    <h2>История:</h2>
     <div id="expensesHistory" class="historyList"></div>
 
     <script src="index.js"></script>
