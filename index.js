@@ -63,14 +63,6 @@ function calculateExpenses(expenses) {
   return sum;
 }
 
-function render(expenses) {
-  const sum = calculateExpenses(expenses);
-
-  renderExpensesHistory(expenses);
-  renderExpensesSum(sum);
-  renderStatus(expenses);
-}
-
 function renderExpensesHistory(expenses) {
   let expensesListHTML = "";
 
@@ -92,4 +84,12 @@ function renderStatus(sum) {
     expensesStatusNode.innerText = STATUS_OUT_OF_LIMIT;
     expensesStatusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
+}
+
+function render(expenses) {
+  const sum = calculateExpenses(expenses);
+
+  renderExpensesHistory(expenses);
+  renderExpensesSum(sum);
+  renderStatus(sum);
 }
