@@ -7,6 +7,7 @@ const addExpensesButtonNode = document.getElementById("addExpensesButton");
 const expensesHistoryNode = document.getElementById("expensesHistory");
 const expensesSumNode = document.getElementById("expensesSum");
 const expensesLimitNode = document.getElementById("expensesLimit");
+const expensesStatusNode = document.getElementById("expensesStatus");
 
 expensesLimitNode.innerText = `${LIMIT} руб.`;
 
@@ -36,4 +37,10 @@ addExpensesButtonNode.addEventListener("click", function () {
   });
 
   expensesSumNode.innerText = `${sum} руб.`;
+
+  if (sum <= LIMIT) {
+    expensesStatusNode.innerText = "Всё хорошо";
+  } else {
+    expensesStatusNode.innerText = "Всё плохо";
+  }
 });
