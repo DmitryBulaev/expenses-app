@@ -25,6 +25,7 @@ h2 {
 }
 
 ol {
+  margin: auto;
   padding-inline-start: 32px;
   font-size: 32px;
 }
