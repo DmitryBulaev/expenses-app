@@ -29,3 +29,11 @@ ol {
   padding-inline-start: 32px;
   font-size: 32px;
 }
+
+.status {
+  color: #039000;
+}
+
+.status_red {
+  color: #fc0000;
+}
