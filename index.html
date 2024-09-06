@@ -20,16 +20,23 @@
   <body>
     <h1>Приложение по учёту расходов</h1>
 
-    <input id="expensesInput" type="number" class="expenses-input" />
-    <button id="addExpensesButton" class="add-expenses-button">Добавить</button>
+    <div class="input-section">
+      <input id="expensesInput" type="number" class="input-section__input" />
+      <button id="addExpensesButton" class="input-section__add-button">
+        Добавить
+      </button>
+    </div>
 
-    <h2>Лимит: <span id="expensesLimit" class="expenses-limit"></span></h2>
-    <h2>Сумма: <span id="expensesSum" class="expenses-sum"></span></h2>
-
-    <h2>
-      Статус:
-      <span id="expensesStatus" class="expenses-status status"></span>
-    </h2>
+    <div class="output-section">
+      <h2>
+        Лимит: <span id="expensesLimit" class="output-section__limit"></span>
+      </h2>
+      <h2>Сумма: <span id="expensesSum" class="output-section__sum"></span></h2>
+      <h2>
+        Статус:
+        <span id="expensesStatus" class="output-section__status status"></span>
+      </h2>
+    </div>
 
     <h2>История:</h2>
     <div id="expensesHistory" class="historyList"></div>

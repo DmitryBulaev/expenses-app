@@ -1,6 +1,6 @@
 body {
   font-family: Ubuntu, sans-serif;
-  background: #778899;
+  background: #7e85a0;
 }
 
 h1 {
@@ -14,12 +14,19 @@ h2 {
   font-weight: bold;
 }
 
-.expenses-input {
+.input-section {
+  margin: auto;
+  background: #252e7d;
+  width: 350px;
+  height: 150px;
+}
+
+.input-section__input {
   width: 300px;
   height: 40px;
 }
 
-.add-expenses-button {
+.input-section__add-button {
   width: 80px;
   height: 40px;
 }
