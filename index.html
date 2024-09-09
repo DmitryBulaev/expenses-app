@@ -22,7 +22,14 @@
 
     <div class="expenses-container">
       <div class="input-section">
-        <input id="expensesInput" type="number" class="input-section__input" />
+        <div class="input-wrapper">
+          <input
+            id="expensesInput"
+            type="number"
+            min="0"
+            class="input-section__input rub"
+          />
+        </div>
         <button id="addExpensesButton" class="input-section__add-button">
           Добавить
         </button>
