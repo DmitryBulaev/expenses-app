@@ -10,8 +10,9 @@ const expensesHistoryNode = document.getElementById("expensesHistory");
 const expensesSumNode = document.getElementById("expensesSum");
 const expensesLimitNode = document.getElementById("expensesLimit");
 const expensesStatusNode = document.getElementById("expensesStatus");
+const resetButtonNode = document.getElementById("resetButton");
 
-const expenses = [];
+let expenses = [];
 
 init(expenses);
 
@@ -25,6 +26,12 @@ addExpensesButtonNode.addEventListener("click", function () {
   trackExpense(expense);
 
   render(expenses);
+});
+
+resetButtonNode.addEventListener("click", function () {
+  removeHistory();
+  resetSum();
+  resetStatus();
 });
 
 function init(expenses) {
@@ -92,4 +99,19 @@ function render(expenses) {
   renderExpensesHistory(expenses);
   renderExpensesSum(sum);
   renderStatus(sum);
+}
+
+function removeHistory() {
+  expenses = [];
+  expensesHistoryNode.innerHTML = "";
+}
+
+function resetSum() {
+  const sum = 0;
+  expensesSumNode.innerText = `${sum} ${CURRENCY}`;
+}
+
+function resetStatus() {
+  expensesStatusNode.innerText = STATUS_IN_LIMIT;
+  expensesStatusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
 }

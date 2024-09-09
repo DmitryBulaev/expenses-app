@@ -43,9 +43,11 @@ h2 {
   font-size: 32px;
   background: #f2f2f2;
   border: 1px color black;
+  outline: solid 2px;
 }
 
-.input-section__add-button {
+.input-section__add-button,
+.history-section__reset_button {
   width: 100%;
   height: 60px;
   border-radius: 15px;
@@ -59,6 +61,14 @@ h2 {
   opacity: 0.6;
 }
 
+.history-section__reset_button {
+  background: #fc0000;
+}
+
+.history-section__reset_button:hover {
+  opacity: 0.6;
+}
+
 .output-section__limit,
 .output-section__sum,
 .output-section__status,
@@ -68,9 +78,22 @@ h2 {
   font-weight: 400;
 }
 
+.reset-button {
+  width: 100%;
+  height: 60px;
+  border-radius: 15px;
+  font-size: 32px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #0094ff;
+}
+
+.history-section__historyList {
+  margin-bottom: 20px;
+}
+
 ol {
   margin: auto;
-  padding-inline-start: 32px;
   font-size: 32px;
 }
 
