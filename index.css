@@ -55,7 +55,6 @@ h2 {
 
 .input-section__input::after {
   content: "руб.";
-  color: black;
 }
 
 .input-section__add-button,
