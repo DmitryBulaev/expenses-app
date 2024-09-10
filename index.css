@@ -39,9 +39,16 @@ h2 {
   margin-bottom: 30px;
   width: 100%;
   padding: 5px 20px 5px 15px;
+  display: flex;
+  align-items: center;
   height: 56px;
   border-radius: 15px;
-  outline: solid 2px;
+  outline: solid 1px;
+}
+
+.input-wrapper::after {
+  content: "руб.";
+  font-size: 32px;
 }
 
 .input-section__input {
@@ -51,10 +58,6 @@ h2 {
   font-size: 32px;
   background: #f2f2f2;
   outline: none;
-}
-
-.input-section__input::after {
-  content: "руб.";
 }
 
 .input-section__add-button,
