@@ -75,10 +75,6 @@ h2 {
   opacity: 0.6;
 }
 
-.history-section__reset_button {
-  background: #fc0000;
-}
-
 .history-section__reset_button:hover {
   opacity: 0.6;
 }
