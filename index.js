@@ -5,6 +5,7 @@ const STATUS_OUT_OF_LIMIT = "Всё плохо";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
+const categorySelectNode = document.getElementById("categorySelect");
 const addExpensesButtonNode = document.getElementById("addExpensesButton");
 const expensesHistoryNode = document.getElementById("expensesHistory");
 const expensesSumNode = document.getElementById("expensesSum");
@@ -20,6 +21,12 @@ addExpensesButtonNode.addEventListener("click", function () {
   const expense = getExpenseFromUser();
 
   if (!expense) {
+    return;
+  }
+
+  const category = getSelectedCategory();
+
+  if (category === "Категория") {
     return;
   }
 
@@ -40,20 +47,35 @@ function init(expenses) {
   expensesStatusNode.innerText = STATUS_IN_LIMIT;
 }
 
-function trackExpense(expense) {
-  expenses.push(expense);
-}
+const getSelectedCategory = () => {
+  return categorySelectNode.value;
+};
+
+const getExpenseValue = () => {
+  return parseInt(expensesInputNode.value);
+};
 
 function getExpenseFromUser() {
   if (!expensesInputNode.value) {
     return null;
   }
 
-  const expense = parseInt(expensesInputNode.value);
+  const currentCategory = getSelectedCategory();
+
+  const expenseValue = getExpenseValue();
+
+  const expense = {
+    amount: expenseValue,
+    category: currentCategory,
+  };
 
   clearInput();
 
   return expense;
+}
+
+function trackExpense(expense) {
+  expenses.push(expense);
 }
 
 function clearInput() {
@@ -64,7 +86,7 @@ function calculateExpenses(expenses) {
   let sum = 0;
 
   expenses.forEach((element) => {
-    sum += element;
+    sum += element.amount;
   });
 
   return sum;
@@ -74,7 +96,7 @@ function renderExpensesHistory(expenses) {
   let expensesListHTML = "";
 
   expenses.forEach((element) => {
-    expensesListHTML += `<li>${element}  ${CURRENCY}</li>`;
+    expensesListHTML += `<li>${element.category} - ${element.amount}  ${CURRENCY}</li>`;
   });
 
   expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
