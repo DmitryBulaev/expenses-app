@@ -1,4 +1,4 @@
-const LIMIT = 10000;
+let LIMIT = 10000;
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
@@ -12,6 +12,7 @@ const expensesSumNode = document.getElementById("expensesSum");
 const expensesLimitNode = document.getElementById("expensesLimit");
 const expensesStatusNode = document.getElementById("expensesStatus");
 const resetButtonNode = document.getElementById("resetButton");
+const changeLimitButtonNode = document.getElementById("changeLimitBtn");
 
 let expenses = [];
 
@@ -39,6 +40,22 @@ resetButtonNode.addEventListener("click", function () {
   removeHistory();
   resetSum();
   resetStatus();
+});
+
+changeLimitButtonNode.addEventListener("click", function () {
+  const newLimit = prompt("Введите новый лимит");
+
+  const newLimitValue = parseInt(newLimit);
+
+  if (!newLimitValue) {
+    return;
+  }
+
+  expensesLimitNode.innerText = newLimitValue;
+
+  LIMIT = newLimitValue;
+
+  render();
 });
 
 function init(expenses) {
