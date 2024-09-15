@@ -10,12 +10,6 @@ h1 {
   font-weight: 500;
 }
 
-h2 {
-  color: black;
-  font-size: 32px;
-  font-weight: bold;
-}
-
 .expenses-container {
   margin: auto;
   padding-top: 50px;
@@ -26,7 +20,7 @@ h2 {
 }
 
 .input-section,
-.output-section,
+.stats-section,
 .history-section {
   padding: 20px 20px;
   background: #f2f2f2;
@@ -92,9 +86,15 @@ h2 {
   background: #f2f2f2;
 }
 
-.output-section__limit,
-.output-section__sum,
-.output-section__status,
+.lable {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.limit-value,
+.sum-value,
+.status-value,
 .historyList {
   color: black;
   font-size: 32px;

@@ -44,23 +44,29 @@
           Добавить
         </button>
       </div>
-      <div class="output-section">
-        <h2>
-          Лимит: <span id="expensesLimit" class="output-section__limit"></span>
-        </h2>
-        <h2>
-          Сумма: <span id="expensesSum" class="output-section__sum"></span>
-        </h2>
-        <h2>
-          Статус:
-          <span
-            id="expensesStatus"
-            class="output-section__status status"
-          ></span>
-        </h2>
+      <div class="stats-section">
+        <div class="stats-section__limit">
+          <span class="lable">Лимит: </span
+          ><span id="expensesLimit" class="limit-value"></span>
+          <img
+            id="changeLimitBtn"
+            src="changeLimitBtn.png"
+            alt="Кнопка смены лимита"
+          />
+        </div>
+
+        <div class="stats-section__sum">
+          <span class="lable">Сумма: </span
+          ><span id="expensesSum" class="sum-value"></span>
+        </div>
+
+        <div class="stats-section__status">
+          <span class="lable">Статус: </span>
+          <span id="expensesStatus" class="status-value status"></span>
+        </div>
       </div>
       <div class="history-section">
-        <h2>История:</h2>
+        <h2 class="history-section__title lable">История:</h2>
         <div id="expensesHistory" class="history-section__historyList"></div>
         <button id="resetButton" class="history-section__reset_button">
           Сбросить расходы
