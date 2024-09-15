@@ -1,4 +1,3 @@
-let LIMIT = 10000;
 const CHANGE_LIMIT_TEXT = "Введите новый лимит";
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
@@ -15,6 +14,7 @@ const expensesStatusNode = document.getElementById("expensesStatus");
 const resetButtonNode = document.getElementById("resetButton");
 const changeLimitButtonNode = document.getElementById("changeLimitBtn");
 
+let limit = parseInt(expensesLimitNode.innerText);
 let expenses = [];
 
 init(expenses);
@@ -54,13 +54,13 @@ changeLimitButtonNode.addEventListener("click", function () {
 
   expensesLimitNode.innerText = newLimitValue;
 
-  LIMIT = newLimitValue;
+  limit = newLimitValue;
 
   render();
 });
 
 function init(expenses) {
-  expensesLimitNode.innerText = `${LIMIT} ${CURRENCY}`;
+  expensesLimitNode.innerText = `${limit} ${CURRENCY}`;
   expensesSumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
   expensesStatusNode.innerText = STATUS_IN_LIMIT;
 }
@@ -125,11 +125,11 @@ function renderExpensesSum(sum) {
 }
 
 function renderStatus(sum) {
-  if (sum <= LIMIT) {
+  if (sum <= limit) {
     expensesStatusNode.innerText = STATUS_IN_LIMIT;
   } else {
     expensesStatusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
-      LIMIT - sum
+      limit - sum
     } руб)`;
     expensesStatusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
