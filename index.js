@@ -1,4 +1,5 @@
 let LIMIT = 10000;
+const CHANGE_LIMIT_TEXT = "Введите новый лимит";
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
@@ -43,7 +44,7 @@ resetButtonNode.addEventListener("click", function () {
 });
 
 changeLimitButtonNode.addEventListener("click", function () {
-  const newLimit = prompt("Введите новый лимит");
+  const newLimit = prompt(CHANGE_LIMIT_TEXT);
 
   const newLimitValue = parseInt(newLimit);
 
