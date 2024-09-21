@@ -15,6 +15,8 @@ const resetButtonNode = document.getElementById("resetButton");
 const changeLimitButtonNode = document.getElementById("changeLimitBtn");
 
 let limit = parseInt(expensesLimitNode.innerText);
+expensesLimitNode.innerText = localStorage.getItem("limit");
+
 let expenses = [];
 
 init(expenses);
@@ -55,6 +57,7 @@ changeLimitButtonNode.addEventListener("click", function () {
   expensesLimitNode.innerText = newLimitValue;
 
   limit = newLimitValue;
+  localStorage.setItem("limit", newLimitValue);
 
   render();
 });
