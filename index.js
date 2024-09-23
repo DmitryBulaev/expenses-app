@@ -50,7 +50,15 @@ const renderStatus = () => {
   }
 };
 
-const renderHistory = () => {};
+const renderHistory = () => {
+  expensesHistoryNode.innerHTML = "";
+
+  expenses.forEach((expense) => {
+    const historyItem = document.createElement("li");
+    historyItem.innerText = `${expense.category} - ${expense.amount} ${CURRENCY}`;
+    expensesHistoryNode.appendChild(historyItem);
+  });
+};
 
 const render = () => {
   renderStatus();
@@ -90,4 +98,4 @@ addExpensesButtonNode.addEventListener("click", addButtonHandler);
 
 resetButtonNode.addEventListener("click", resetButtonHandler);
 
-changeLimitButtonNode.addEventListener("click", changeLimitHandler);
+// changeLimitButtonNode.addEventListener("click", changeLimitHandler);
