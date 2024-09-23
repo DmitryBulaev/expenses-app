@@ -76,7 +76,7 @@ h1 {
   opacity: 0.6;
 }
 
-.category-select {
+.input-section__category-select {
   width: 100%;
   height: 56px;
   border-radius: 15px;
@@ -108,7 +108,7 @@ h1 {
   height: 35px;
 }
 
-.reset-button {
+.history-section__reset-button {
   width: 100%;
   height: 60px;
   border-radius: 15px;

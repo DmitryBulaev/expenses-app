@@ -30,7 +30,8 @@
             class="input-section__input"
           />
         </div>
-        <select id="categorySelect" class="category-select">
+
+        <select id="categorySelect" class="input-section__category-select">
           <option hidden disabled selected value="Категория">
             Выберите категорию
           </option>
@@ -40,14 +41,16 @@
           <option value="Продукты">Продукты</option>
           <option value="Развлечения">Развлечения</option>
         </select>
+
         <button id="addExpensesButton" class="input-section__add-button">
           Добавить
         </button>
       </div>
+
       <div class="stats-section">
         <div class="stats-section__limit">
           <span class="lable">Лимит: </span>
-          <span id="expensesLimit" class="limit-value">10000</span>
+          <span id="expensesLimit" class="limit-value">10000 руб.</span>
           <img
             id="changeLimitBtn"
             class="change-limit-button"
@@ -58,7 +61,7 @@
 
         <div class="stats-section__sum">
           <span class="lable">Сумма: </span>
-          <span id="expensesSum" class="sum-value"></span>
+          <span id="expensesSum" class="sum-value">0 руб.</span>
         </div>
 
         <div class="stats-section__status">
@@ -66,10 +69,11 @@
           <span id="expensesStatus" class="status-value status"></span>
         </div>
       </div>
+
       <div class="history-section">
-        <h2 class="history-section__title lable">История:</h2>
-        <div id="expensesHistory" class="history-section__historyList"></div>
-        <button id="resetButton" class="history-section__reset_button">
+        <span class="history-section__title lable">История:</span>
+        <ol id="expensesHistory" class="history-section__historyList"></ol>
+        <button id="resetButton" class="history-section__reset-button">
           Сбросить расходы
         </button>
       </div>

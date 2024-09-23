@@ -19,53 +19,29 @@ let limit = parseInt(expensesLimitNode.innerText);
 
 let expenses = [];
 
-init(expenses);
+const getTotal = () => {
+  let total = 0;
 
-addExpensesButtonNode.addEventListener("click", function () {
-  const expense = getExpenseFromUser();
+  expenses.forEach((expense) => {
+    total += expense.amount;
+  });
 
-  if (!expense) {
-    return;
+  return total;
+};
+
+const renderStatus = () => {
+  if (total <= limit) {
+    expensesStatusNode.innerText = STATUS_IN_LIMIT;
+  } else {
+    expensesStatusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
+      limit - total
+    } руб)`;
+    expensesStatusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
   }
+};
 
-  const category = getSelectedCategory();
-
-  if (category === "Категория") {
-    return;
-  }
-
-  trackExpense(expense);
-
-  render(expenses);
-});
-
-resetButtonNode.addEventListener("click", function () {
-  removeHistory();
-  resetSum();
-  resetStatus();
-});
-
-changeLimitButtonNode.addEventListener("click", function () {
-  const newLimit = prompt(CHANGE_LIMIT_TEXT);
-
-  const newLimitValue = parseInt(newLimit);
-
-  if (!newLimitValue) {
-    return;
-  }
-
-  expensesLimitNode.innerText = newLimitValue;
-
-  limit = newLimitValue;
-  localStorage.setItem("limit", newLimitValue);
-
-  render();
-});
-
-function init(expenses) {
-  expensesLimitNode.innerText = `${limit} ${CURRENCY}`;
-  expensesSumNode.innerText = `${calculateExpenses(expenses)} ${CURRENCY}`;
-  expensesStatusNode.innerText = STATUS_IN_LIMIT;
+function clearInput(input) {
+  input.value = "";
 }
 
 const getSelectedCategory = () => {
@@ -99,20 +75,6 @@ function trackExpense(expense) {
   expenses.push(expense);
 }
 
-function clearInput() {
-  expensesInputNode.value = "";
-}
-
-function calculateExpenses(expenses) {
-  let sum = 0;
-
-  expenses.forEach((element) => {
-    sum += element.amount;
-  });
-
-  return sum;
-}
-
 function renderExpensesHistory(expenses) {
   let expensesListHTML = "";
 
@@ -127,17 +89,6 @@ function renderExpensesSum(sum) {
   expensesSumNode.innerText = `${sum} ${CURRENCY}`;
 }
 
-function renderStatus(sum) {
-  if (sum <= limit) {
-    expensesStatusNode.innerText = STATUS_IN_LIMIT;
-  } else {
-    expensesStatusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
-      limit - sum
-    } руб)`;
-    expensesStatusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
-  }
-}
-
 function render(expenses) {
   const sum = calculateExpenses(expenses);
 
@@ -146,17 +97,8 @@ function render(expenses) {
   renderStatus(sum);
 }
 
-function removeHistory() {
-  expenses = [];
-  expensesHistoryNode.innerHTML = "";
-}
+addExpensesButtonNode.addEventListener("click", addButtonHandler);
 
-function resetSum() {
-  const sum = 0;
-  expensesSumNode.innerText = `${sum} ${CURRENCY}`;
-}
+resetButtonNode.addEventListener("click", resetButtonHandler);
 
-function resetStatus() {
-  expensesStatusNode.innerText = STATUS_IN_LIMIT;
-  expensesStatusNode.classList.remove(STATUS_OUT_OF_LIMIT_CLASSNAME);
-}
+changeLimitButtonNode.addEventListener("click", changeLimitHandler);
