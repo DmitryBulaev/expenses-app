@@ -15,7 +15,7 @@ const resetButtonNode = document.getElementById("resetButton");
 const changeLimitButtonNode = document.getElementById("changeLimitBtn");
 
 let limit = parseInt(expensesLimitNode.innerText);
-expensesLimitNode.innerText = localStorage.getItem("limit");
+// expensesLimitNode.innerText = localStorage.getItem("limit");
 
 let expenses = [];
 
