@@ -2,7 +2,7 @@ const CHANGE_LIMIT_TEXT = "Введите новый лимит";
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
-STATUS_IN_LIMIT_CLASSNAME = "status_green";
+const STATUS_IN_LIMIT_CLASSNAME = "status_green";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
@@ -39,14 +39,17 @@ const getTotal = () => {
 };
 
 const renderStatus = () => {
+  const total = getTotal(expenses);
+  expensesSumNode.innerText = `${total} ${CURRENCY}`;
+
   if (total <= limit) {
     expensesStatusNode.innerText = STATUS_IN_LIMIT;
-    expensesStatusNode.classList.add(STATUS_IN_LIMIT_CLASSNAME);
+    expensesStatusNode.className = STATUS_IN_LIMIT_CLASSNAME;
   } else {
     expensesStatusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
       limit - total
     } руб)`;
-    expensesStatusNode.classList.add(STATUS_OUT_OF_LIMIT_CLASSNAME);
+    expensesStatusNode.className = STATUS_OUT_OF_LIMIT_CLASSNAME;
   }
 };
 

@@ -131,8 +131,12 @@ ol {
 
 .status_green {
   color: #039000;
+  font-size: 32px;
+  font-weight: 400;
 }
 
 .status_red {
   color: #fc0000;
+  font-size: 32px;
+  font-weight: 400;
 }
