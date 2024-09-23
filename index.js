@@ -2,6 +2,7 @@ const CHANGE_LIMIT_TEXT = "Введите новый лимит";
 const CURRENCY = "руб.";
 const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
+STATUS_IN_LIMIT_CLASSNAME = "status_green";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
 
 const expensesInputNode = document.getElementById("expensesInput");
@@ -19,6 +20,14 @@ let limit = parseInt(expensesLimitNode.innerText);
 
 let expenses = [];
 
+const getExpenseFromUser = () => {
+  return parseInt(expensesInputNode.value);
+};
+
+const getSelectedCategory = () => {
+  return categorySelectNode.value;
+};
+
 const getTotal = () => {
   let total = 0;
 
@@ -32,6 +41,7 @@ const getTotal = () => {
 const renderStatus = () => {
   if (total <= limit) {
     expensesStatusNode.innerText = STATUS_IN_LIMIT;
+    expensesStatusNode.classList.add(STATUS_IN_LIMIT_CLASSNAME);
   } else {
     expensesStatusNode.innerText = `${STATUS_OUT_OF_LIMIT} (${
       limit - total
@@ -40,62 +50,41 @@ const renderStatus = () => {
   }
 };
 
-function clearInput(input) {
+const renderHistory = () => {};
+
+const render = () => {
+  renderStatus();
+  renderHistory();
+};
+
+const clearInput = (input) => {
   input.value = "";
-}
-
-const getSelectedCategory = () => {
-  return categorySelectNode.value;
 };
 
-const getExpenseValue = () => {
-  return parseInt(expensesInputNode.value);
-};
-
-function getExpenseFromUser() {
-  if (!expensesInputNode.value) {
-    return null;
+const addButtonHandler = () => {
+  const currentAmount = getExpenseFromUser();
+  if (!currentAmount) {
+    return;
   }
 
   const currentCategory = getSelectedCategory();
+  if (currentCategory === "Категория") {
+    return;
+  }
 
-  const expenseValue = getExpenseValue();
+  const expense = { amount: currentAmount, category: currentCategory };
 
-  const expense = {
-    amount: expenseValue,
-    category: currentCategory,
-  };
-
-  clearInput();
-
-  return expense;
-}
-
-function trackExpense(expense) {
   expenses.push(expense);
-}
 
-function renderExpensesHistory(expenses) {
-  let expensesListHTML = "";
+  render();
 
-  expenses.forEach((element) => {
-    expensesListHTML += `<li>${element.category} - ${element.amount}  ${CURRENCY}</li>`;
-  });
+  clearInput(expensesInputNode);
+};
 
-  expensesHistoryNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
-}
-
-function renderExpensesSum(sum) {
-  expensesSumNode.innerText = `${sum} ${CURRENCY}`;
-}
-
-function render(expenses) {
-  const sum = calculateExpenses(expenses);
-
-  renderExpensesHistory(expenses);
-  renderExpensesSum(sum);
-  renderStatus(sum);
-}
+const resetButtonHandler = () => {
+  expenses = [];
+  render();
+};
 
 addExpensesButtonNode.addEventListener("click", addButtonHandler);
 
