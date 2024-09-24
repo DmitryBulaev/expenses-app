@@ -97,8 +97,24 @@ const resetButtonHandler = () => {
   render();
 };
 
+const changeLimitHandler = () => {
+  const newLimit = prompt(CHANGE_LIMIT_TEXT);
+
+  const newLimitValue = parseInt(newLimit);
+
+  if (!newLimitValue) {
+    return;
+  }
+
+  expensesLimitNode.innerText = `${newLimitValue} ${CURRENCY}`;
+
+  limit = newLimitValue;
+
+  render();
+};
+
 addExpensesButtonNode.addEventListener("click", addButtonHandler);
 
 resetButtonNode.addEventListener("click", resetButtonHandler);
 
-// changeLimitButtonNode.addEventListener("click", changeLimitHandler);
+changeLimitButtonNode.addEventListener("click", changeLimitHandler);
