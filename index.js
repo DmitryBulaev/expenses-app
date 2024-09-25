@@ -3,6 +3,8 @@ const STATUS_IN_LIMIT = "Всё хорошо";
 const STATUS_OUT_OF_LIMIT = "Всё плохо";
 const STATUS_IN_LIMIT_CLASSNAME = "status_green";
 const STATUS_OUT_OF_LIMIT_CLASSNAME = "status_red";
+const STORAGE_LABEL_LIMIT = "limit";
+const STORAGE_LABEL_EXPENSES = "expenses";
 
 const expensesInputNode = document.getElementById("expensesInput");
 const categorySelectNode = document.getElementById("categorySelect");
@@ -19,14 +21,28 @@ let limit = parseInt(expensesLimitNode.innerText);
 let expenses = [];
 
 const limitInit = () => {
-  const limitFromStorage = parseInt(localStorage.getItem("limit"));
+  const limitFromStorage = parseInt(localStorage.getItem(STORAGE_LABEL_LIMIT));
   if (!limitFromStorage) {
     return;
   }
   expensesLimitNode.innerText = limitFromStorage;
+  limit = parseInt(expensesLimitNode.innerText);
 };
 
 limitInit();
+
+const expensesInit = () => {
+  const expensesFromStorageString = localStorage.getItem(
+    STORAGE_LABEL_EXPENSES
+  );
+  const expensesFromStorage = JSON.parse(expensesFromStorageString);
+  if (Array.isArray(expensesFromStorage)) {
+    expenses = expensesFromStorage;
+  }
+  render();
+};
+
+expensesInit();
 
 const getExpenseFromUser = () => {
   return parseInt(expensesInputNode.value);
@@ -36,7 +52,7 @@ const getSelectedCategory = () => {
   return categorySelectNode.value;
 };
 
-const getTotal = () => {
+function getTotal() {
   let total = 0;
 
   expenses.forEach((expense) => {
@@ -44,9 +60,9 @@ const getTotal = () => {
   });
 
   return total;
-};
+}
 
-const renderStatus = () => {
+function renderStatus() {
   const total = getTotal(expenses);
   expensesSumNode.innerText = total;
 
@@ -59,9 +75,9 @@ const renderStatus = () => {
     } руб.)`;
     expensesStatusNode.className = STATUS_OUT_OF_LIMIT_CLASSNAME;
   }
-};
+}
 
-const renderHistory = () => {
+function renderHistory() {
   expensesHistoryNode.innerHTML = "";
 
   expenses.forEach((expense) => {
@@ -70,12 +86,17 @@ const renderHistory = () => {
     historyItem.innerText = `${expense.category} - ${expense.amount}`;
     expensesHistoryNode.appendChild(historyItem);
   });
+}
+
+const saveExpensesToStorage = () => {
+  const expensesString = JSON.stringify(expenses);
+  localStorage.setItem(STORAGE_LABEL_EXPENSES, expensesString);
 };
 
-const render = () => {
+function render() {
   renderStatus();
   renderHistory();
-};
+}
 
 const clearInput = (input) => {
   input.value = "";
@@ -97,6 +118,8 @@ const addButtonHandler = () => {
   const expense = { amount: currentAmount, category: currentCategory };
 
   expenses.push(expense);
+
+  saveExpensesToStorage();
 
   render();
 
@@ -120,7 +143,7 @@ const changeLimitHandler = () => {
   expensesLimitNode.innerText = newLimitValue;
 
   limit = newLimitValue;
-  localStorage.setItem("limit", newLimitValue);
+  localStorage.setItem(STORAGE_LABEL_LIMIT, newLimitValue);
 
   render();
 };
